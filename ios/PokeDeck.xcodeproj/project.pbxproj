@@ -17,6 +17,8 @@
 		0075071E5EC74E9AB72DC621 /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 871F677B22E54202912729CA /* Inter-Bold.ttf */; };
 		FA7B08DFD7964CB2BABFEB24 /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 42A0C76673794A39AFC32040 /* Inter-Medium.ttf */; };
 		927B57CB254A49F7BBA09709 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E66D1CA8392040D792153A95 /* Inter-Regular.ttf */; };
+		0AE7D7968D904112B57A5EF5 /* FiraMono-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5ED845CAA59140D391F917D0 /* FiraMono-Bold.ttf */; };
+		293A5646174342B5A1421CE7 /* FiraMono-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7621AECC40424350990615B0 /* FiraMono-Medium.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,8 @@
 		871F677B22E54202912729CA /* Inter-Bold.ttf */ = {isa = PBXFileReference; name = "Inter-Bold.ttf"; path = "../src/assets/fonts/Inter-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		42A0C76673794A39AFC32040 /* Inter-Medium.ttf */ = {isa = PBXFileReference; name = "Inter-Medium.ttf"; path = "../src/assets/fonts/Inter-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		E66D1CA8392040D792153A95 /* Inter-Regular.ttf */ = {isa = PBXFileReference; name = "Inter-Regular.ttf"; path = "../src/assets/fonts/Inter-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5ED845CAA59140D391F917D0 /* FiraMono-Bold.ttf */ = {isa = PBXFileReference; name = "FiraMono-Bold.ttf"; path = "../src/assets/fonts/FiraMono-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7621AECC40424350990615B0 /* FiraMono-Medium.ttf */ = {isa = PBXFileReference; name = "FiraMono-Medium.ttf"; path = "../src/assets/fonts/FiraMono-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +147,8 @@
 				871F677B22E54202912729CA /* Inter-Bold.ttf */,
 				42A0C76673794A39AFC32040 /* Inter-Medium.ttf */,
 				E66D1CA8392040D792153A95 /* Inter-Regular.ttf */,
+				5ED845CAA59140D391F917D0 /* FiraMono-Bold.ttf */,
+				7621AECC40424350990615B0 /* FiraMono-Medium.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -243,6 +249,8 @@
 				0075071E5EC74E9AB72DC621 /* Inter-Bold.ttf in Resources */,
 				FA7B08DFD7964CB2BABFEB24 /* Inter-Medium.ttf in Resources */,
 				927B57CB254A49F7BBA09709 /* Inter-Regular.ttf in Resources */,
+				0AE7D7968D904112B57A5EF5 /* FiraMono-Bold.ttf in Resources */,
+				293A5646174342B5A1421CE7 /* FiraMono-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
