@@ -6,7 +6,7 @@ export const theme = {
     background: '#FFFFFF',
 
     heading100: '#464646',
-    heading60: '#818490',
+    heading50: '#818490',
     buttonTitle: '#F3F3F3',
 
     highlight: '#F95B5B',
@@ -17,6 +17,13 @@ export const theme = {
   },
 
   fonts: {
-    buttonTitle: '',
+    title: 'FiraMono-Medium',
+    titleBold: 'FiraMono-bold',
+
+    buttonTitle: 'FiraMono-Medium',
+    placeholder: 'Inter-Regular',
+
+    heading100: 'Inter-Bold',
+    heading50: 'Inter-Medium',
   },
 };
