@@ -72,8 +72,8 @@ export const SignIn = () => {
       </Content>
 
       <AuthNavigate
-        title='Dont have an account?'
-        highlight='SignUp'
+        title="Don't have an account?"
+        highlight='Sign Up'
         onPress={handleSignUp}
       />
     </Container>
