@@ -16,11 +16,10 @@ import {
   Line,
   LineTitle,
   ActionContainer,
-  BottomTitle,
-  Highlight,
 } from './styles';
 
 import { useNavigation } from '@react-navigation/native';
+import { AuthNavigate } from '../../components/AuthNavigate';
 
 export const SignIn = () => {
   const [username, setUsername] = useState('');
@@ -72,11 +71,11 @@ export const SignIn = () => {
         </ActionContainer>
       </Content>
 
-      <Action onPress={handleSignUp}>
-        <BottomTitle>
-          Don’t have an account? <Highlight>Sign Up</Highlight>
-        </BottomTitle>
-      </Action>
+      <AuthNavigate
+        title='Dont have an account?'
+        highlight='SignUp'
+        onPress={handleSignUp}
+      />
     </Container>
   );
 };

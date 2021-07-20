@@ -54,16 +54,3 @@ export const LineTitle = styled.Text`
 export const ActionContainer = styled.View`
   align-items: center;
 `;
-
-export const BottomTitle = styled.Text`
-  font-size: 18px;
-  text-align: center;
-  color: ${theme.colors.heading100};
-  font-family: ${theme.fonts.title};
-  padding-top: 20px;
-  padding-bottom: 20px;
-`;
-
-export const Highlight = styled.Text`
-  color: ${theme.colors.highlight};
-`;
