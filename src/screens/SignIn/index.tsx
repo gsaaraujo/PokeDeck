@@ -20,16 +20,21 @@ import {
 
 import { useNavigation } from '@react-navigation/native';
 import { AuthNavigate } from '../../components/AuthNavigate';
+import { RequiredFieldMessage } from '../../components/RequiredFieldMessage';
 
 export const SignIn = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [isRequiredFieldMessage, isSetRequiredFieldMessage] = useState(true);
 
   const navigation = useNavigation();
 
   const handleUsername = (username: string) => setUsername(username);
 
   const handlePassword = (password: string) => setPassword(password);
+
+  const handleRequiredFieldFilled = () =>
+    isSetRequiredFieldMessage(!!username && !!password);
 
   const handleSignUp = () => navigation.navigate('SignUp');
 
@@ -47,12 +52,15 @@ export const SignIn = () => {
         <Input
           title='Password'
           hasText={!!password}
+          hasIcon
+          isShowPassword
           maxLength={25}
           onChangeText={password => handlePassword(password)}
-          secureTextEntry
         />
 
-        <AuthButton title='Sign In' />
+        <RequiredFieldMessage isRequiredFieldMessage={isRequiredFieldMessage} />
+
+        <AuthButton title='Sign In' onPress={handleRequiredFieldFilled} />
 
         <Action>
           <Subtitle>Forgot password?</Subtitle>
