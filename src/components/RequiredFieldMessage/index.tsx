@@ -12,7 +12,7 @@ export const RequiredFieldMessage = ({
   return (
     <Container>
       <Title>
-        {!isRequiredFieldMessage && '* Please all fields are required'}
+        {isRequiredFieldMessage && '* Please all fields are required'}
       </Title>
     </Container>
   );

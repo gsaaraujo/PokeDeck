@@ -25,7 +25,7 @@ import { RequiredFieldMessage } from '../../components/RequiredFieldMessage';
 export const SignIn = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [isRequiredFieldMessage, isSetRequiredFieldMessage] = useState(true);
+  const [isRequiredFieldMessage, isSetRequiredFieldMessage] = useState(false);
 
   const navigation = useNavigation();
 
@@ -33,8 +33,10 @@ export const SignIn = () => {
 
   const handlePassword = (password: string) => setPassword(password);
 
-  const handleRequiredFieldFilled = () =>
-    isSetRequiredFieldMessage(!!username && !!password);
+  const handleRequiredFieldFilled = () => {
+    const emptyFields = !(!!username && !!password);
+    isSetRequiredFieldMessage(emptyFields);
+  };
 
   const handleSignUp = () => navigation.navigate('SignUp');
 
