@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { Keyboard } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
 
 import { Input } from '../../components/Input';
 import { AuthButton } from '../../components/AuthButton';
 import { AuthNavigate } from '../../components/AuthNavigate';
+import { RequiredFieldMessage } from '../../components/RequiredFieldMessage';
 
 import { Container, Title, Content } from './styles';
 
@@ -12,7 +14,7 @@ export const SignUp = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [isRequiredFieldMessage, isSetRequiredFieldMessage] = useState(true);
 
   const navigation = useNavigation();
 
@@ -22,13 +24,13 @@ export const SignUp = () => {
 
   const handlePassword = (password: string) => setPassword(password);
 
-  const handleConfirmPassword = (confirmPassword: string) =>
-    setConfirmPassword(confirmPassword);
+  const handleRequiredFieldFilled = () =>
+    isSetRequiredFieldMessage(!!username && !!email && !!password);
 
   const handleSignUp = () => navigation.navigate('SignIn');
 
   return (
-    <Container>
+    <Container onPress={() => Keyboard.dismiss()}>
       <Title>Sign Up</Title>
 
       <Content>
@@ -46,16 +48,13 @@ export const SignUp = () => {
           title='Password'
           hasText={!!password}
           onChangeText={password => handlePassword(password)}
-        />
-        <Input
-          title='Confirm password'
-          hasText={!!confirmPassword}
-          onChangeText={confirmPassword =>
-            handleConfirmPassword(confirmPassword)
-          }
+          hasIcon
+          isShowPassword
         />
 
-        <AuthButton title='Sign Up' />
+        <RequiredFieldMessage isRequiredFieldMessage={isRequiredFieldMessage} />
+
+        <AuthButton title='Sign In' onPress={handleRequiredFieldFilled} />
       </Content>
 
       <AuthNavigate

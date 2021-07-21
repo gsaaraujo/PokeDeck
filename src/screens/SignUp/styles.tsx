@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 import { theme } from '../../global/styles/theme';
 
-export const Container = styled.View`
+export const Container = styled.Pressable`
   flex: 1;
   justify-content: space-evenly;
 `;
