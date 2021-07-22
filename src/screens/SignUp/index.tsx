@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Keyboard, ActivityIndicator } from 'react-native';
+import { Keyboard, ActivityIndicator, Alert } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
 
@@ -51,9 +51,14 @@ export const SignUp = () => {
 
     if (!emptyField) {
       setIsLoading(true);
-      const response = await localApi.post('/user', data);
-
-      if (response.status == 200) {
+      try {
+        localApi.post('/user', data);
+      } catch (error) {
+        Alert.alert(
+          'An unexpected error has occurred',
+          'Please try again later',
+        );
+      } finally {
         handleSignIn();
       }
     }
