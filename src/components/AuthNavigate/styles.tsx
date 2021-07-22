@@ -16,5 +16,5 @@ export const Title = styled.Text`
 `;
 
 export const Highlight = styled.Text`
-  color: ${theme.colors.highlight};
+  color: ${theme.colors.button};
 `;

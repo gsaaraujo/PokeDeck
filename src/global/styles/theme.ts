@@ -8,8 +8,9 @@ export const theme = {
     heading100: '#464646',
     heading50: '#818490',
     buttonTitle: '#F3F3F3',
+    warning: '#F95B5B',
 
-    highlight: '#F95B5B',
+    highlight: '#27AE60',
     placeholder: '#A8B3E9',
 
     header: '#FFD861',
