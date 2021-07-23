@@ -10,7 +10,7 @@ import { RequiredFieldMessage } from '../../components/RequiredFieldMessage';
 
 import { theme } from '../../global/styles/theme';
 
-import { localApi } from '../../services/localDatabaseApi';
+import { databaseApi } from '../../services/databaseApi';
 
 import { Container, Title, Content } from './styles';
 
@@ -52,7 +52,7 @@ export const SignUp = () => {
     if (!emptyField) {
       setIsLoading(true);
       try {
-        localApi.post('/user', data);
+        databaseApi.post('/user', data);
       } catch (error) {
         Alert.alert(
           'An unexpected error has occurred',
