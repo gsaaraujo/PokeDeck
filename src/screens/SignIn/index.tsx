@@ -1,10 +1,19 @@
-import React, { useState } from 'react';
-import { Keyboard } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { ActivityIndicator, Alert, Keyboard } from 'react-native';
 
+import { useNavigation } from '@react-navigation/native';
+
+import { theme } from '../../global/styles/theme';
 import GoogleSVG from '../../assets/images/google.svg';
+
+import { databaseApi } from '../../services/databaseApi';
+
+import { useAuth } from '../../hooks/useAuth';
 
 import { Input } from '../../components/Input';
 import { AuthButton } from '../../components/AuthButton';
+import { AuthNavigate } from '../../components/AuthNavigate';
+import { RequiredFieldMessage } from '../../components/RequiredFieldMessage';
 
 import {
   Container,
@@ -18,16 +27,16 @@ import {
   ActionContainer,
 } from './styles';
 
-import { useNavigation } from '@react-navigation/native';
-import { AuthNavigate } from '../../components/AuthNavigate';
-import { RequiredFieldMessage } from '../../components/RequiredFieldMessage';
-
 export const SignIn = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isRequiredFieldMessage, isSetRequiredFieldMessage] = useState(false);
 
+  const { highlight } = theme.colors;
+  const { isLoading, setIsLoading } = useAuth();
+
   const navigation = useNavigation();
+  const { handleLocalDBApi } = useAuth();
 
   const handleUsername = (username: string) => setUsername(username);
 
@@ -35,10 +44,36 @@ export const SignIn = () => {
 
   const handleRequiredFieldFilled = () => {
     const emptyFields = !(!!username && !!password);
-    isSetRequiredFieldMessage(emptyFields);
+
+    if (emptyFields) {
+      isSetRequiredFieldMessage(true);
+
+      return true;
+    } else {
+      isSetRequiredFieldMessage(false);
+      return false;
+    }
   };
 
   const handleSignUp = () => navigation.navigate('SignUp');
+
+  const handleSignIn = () => {
+    const data = { username, password };
+    const emptyField = handleRequiredFieldFilled();
+
+    if (!emptyField) {
+      setIsLoading(true);
+
+      try {
+        handleLocalDBApi(data);
+      } catch (error) {
+        Alert.alert(
+          'An unexpected error has occurred',
+          'Please try again later',
+        );
+      }
+    }
+  };
 
   return (
     <Container onPress={() => Keyboard.dismiss()}>
@@ -62,7 +97,11 @@ export const SignIn = () => {
 
         <RequiredFieldMessage isRequiredFieldMessage={isRequiredFieldMessage} />
 
-        <AuthButton title='Sign In' onPress={handleRequiredFieldFilled} />
+        {isLoading ? (
+          <ActivityIndicator color={highlight} size='large' />
+        ) : (
+          <AuthButton title='Sign In' onPress={handleSignIn} />
+        )}
 
         <Action>
           <Subtitle>Forgot password?</Subtitle>
