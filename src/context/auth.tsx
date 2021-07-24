@@ -1,23 +1,22 @@
 import React, { useEffect, useState, createContext, ReactNode } from 'react';
+import { Alert } from 'react-native';
 
+import { ACCESS_TOKEN, USER } from '../configs/asyncStorage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import { USER } from '../configs/asyncStorage';
+import { googleApi } from '../services/openIdApi';
 import { databaseApi } from '../services/databaseApi';
 
 type User = {
-  id: string;
-  username: string;
-  email: string;
-  password: string;
-  accessToken: string;
+  name: string;
+  picture: string;
 };
 
 type Data = {
   user: User;
   isLoading: boolean;
-  setIsLoading: (state: boolean) => void;
-  handleLocalDBApi: (data: LoginUser) => void;
+  handleIsLoading: (state: boolean) => void;
+  handleDBApi: (data: LoginUser) => void;
 };
 
 type LoginUser = {
@@ -37,40 +36,59 @@ export const AuthProvider = ({ children }: ChildrenProps) => {
 
   useEffect(() => {
     handleUserAlreadyLogged();
-  }, []);
+  }, [isLoading]);
 
   const handleUserAlreadyLogged = async () => {
-    const userData = await AsyncStorage.getItem(USER);
+    const accessToken = await AsyncStorage.getItem(ACCESS_TOKEN);
+    const accessTokenParse = JSON.parse(accessToken as string);
 
-    if (userData) {
-      const userDataParse = JSON.parse(userData);
+    if (accessToken) {
+      googleApi.defaults.headers.authorization = `Bearer ${accessTokenParse}`;
 
-      setUser(userDataParse);
+      try {
+        const { data } = await googleApi.get('/userinfo');
+        data.name = data.name.split(' ')[0];
+
+        const user = {
+          name: data.name,
+          picture: data.picture,
+        };
+
+        setUser(user);
+      } catch (error) {
+        Alert.alert(
+          'An unexpected error has occurred',
+          'Please try again later',
+        );
+      }
     }
   };
 
-  const handleLocalDBApi = async (data: LoginUser) => {
+  const handleDBApi = async (data: LoginUser) => {
     try {
       const userData = await databaseApi.get(
         `/findUser/${data.username}/${data.password}`,
       );
 
       const userDataJson = JSON.stringify(userData.data);
-      AsyncStorage.setItem(USER, userDataJson);
 
+      AsyncStorage.setItem(USER, userDataJson);
       setUser(userData.data);
     } catch (error) {
       setIsLoading(false);
+      Alert.alert('Unable to connect', 'Invalid Username or Password');
     }
   };
+
+  const handleIsLoading = (state: boolean) => setIsLoading(state);
 
   return (
     <AuthContext.Provider
       value={{
         user,
         isLoading,
-        setIsLoading,
-        handleLocalDBApi,
+        handleIsLoading,
+        handleDBApi,
       }}>
       {children}
     </AuthContext.Provider>
