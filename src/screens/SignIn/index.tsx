@@ -1,12 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { ActivityIndicator, Alert, Keyboard } from 'react-native';
+import { ActivityIndicator, Alert, Keyboard, Linking } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
+
+import { ACCESS_TOKEN } from '../../configs/asyncStorage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+import { googleApi } from '../../services/openIdApi';
 
 import { theme } from '../../global/styles/theme';
 import GoogleSVG from '../../assets/images/google.svg';
 
-import { databaseApi } from '../../services/databaseApi';
+import {
+  CLIENT_ID,
+  RESPONSE_TYPE,
+  REDIRECT_URI,
+  SCOPE,
+} from 'react-native-dotenv';
 
 import { useAuth } from '../../hooks/useAuth';
 
@@ -32,11 +42,15 @@ export const SignIn = () => {
   const [password, setPassword] = useState('');
   const [isRequiredFieldMessage, isSetRequiredFieldMessage] = useState(false);
 
+  useEffect(() => {
+    handleRedirectUri();
+  }, []);
+
   const { highlight } = theme.colors;
-  const { isLoading, setIsLoading } = useAuth();
+  const { isLoading, handleIsLoading } = useAuth();
 
   const navigation = useNavigation();
-  const { handleLocalDBApi } = useAuth();
+  const { handleDBApi } = useAuth();
 
   const handleUsername = (username: string) => setUsername(username);
 
@@ -62,10 +76,10 @@ export const SignIn = () => {
     const emptyField = handleRequiredFieldFilled();
 
     if (!emptyField) {
-      setIsLoading(true);
+      handleIsLoading(true);
 
       try {
-        handleLocalDBApi(data);
+        handleDBApi(data);
       } catch (error) {
         Alert.alert(
           'An unexpected error has occurred',
@@ -73,6 +87,37 @@ export const SignIn = () => {
         );
       }
     }
+  };
+
+  const handleAuthentication = () => {
+    const authUri = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${CLIENT_ID}&response_type=${RESPONSE_TYPE}&redirect_uri=${REDIRECT_URI}&scope=${SCOPE}`;
+
+    try {
+      handleIsLoading(true);
+      Linking.openURL(authUri);
+    } catch (error) {
+      Alert.alert(
+        '1An unexpected error has occurred',
+        'Please try again later',
+      );
+    }
+  };
+
+  const handleRedirectUri = () => {
+    Linking.addEventListener('url', async ({ url }) => {
+      const isAccessAllowed = !url.includes('access_denied');
+
+      if (isAccessAllowed) {
+        const regex = /access_token=(.*?)&/;
+        const matches = url.match(regex) as RegExpMatchArray;
+        const accessToken = matches[1];
+        const accessTokenJson = JSON.stringify(accessToken);
+
+        AsyncStorage.setItem(ACCESS_TOKEN, accessTokenJson);
+
+        handleIsLoading(false);
+      }
+    });
   };
 
   return (
@@ -114,7 +159,7 @@ export const SignIn = () => {
         </LineContainer>
 
         <ActionContainer>
-          <Action>
+          <Action onPress={handleAuthentication}>
             <GoogleSVG />
           </Action>
         </ActionContainer>
