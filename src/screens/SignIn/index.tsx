@@ -96,10 +96,7 @@ export const SignIn = () => {
       handleIsLoading(true);
       Linking.openURL(authUri);
     } catch (error) {
-      Alert.alert(
-        '1An unexpected error has occurred',
-        'Please try again later',
-      );
+      Alert.alert('An unexpected error has occurred', 'Please try again later');
     }
   };
 
