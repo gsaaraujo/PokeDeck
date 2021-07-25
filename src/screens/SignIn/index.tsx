@@ -6,8 +6,6 @@ import { useNavigation } from '@react-navigation/native';
 import { ACCESS_TOKEN } from '../../configs/asyncStorage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import { googleApi } from '../../services/openIdApi';
-
 import { theme } from '../../global/styles/theme';
 import GoogleSVG from '../../assets/images/google.svg';
 
