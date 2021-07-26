@@ -68,6 +68,9 @@
       "jsx",
       "json",
       "node"
-    ]
+    ],
+    "moduleNameMapper": {
+      "\\.svg": "<rootDir>/src/__mocks__/react-native-svg-transformer/svgMock.ts"
+    }
   }
 }
