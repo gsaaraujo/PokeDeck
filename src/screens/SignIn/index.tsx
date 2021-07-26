@@ -121,7 +121,7 @@ export const SignIn = () => {
 
       <Content>
         <Input
-          title='Username or email'
+          title='Username'
           hasText={!!username}
           maxLength={50}
           onChangeText={username => handleUsername(username)}
@@ -140,7 +140,11 @@ export const SignIn = () => {
         {isLoading ? (
           <ActivityIndicator color={highlight} size='large' />
         ) : (
-          <AuthButton title='Sign In' onPress={handleSignIn} />
+          <AuthButton
+            testID='Button.SignIn'
+            title='Sign In'
+            onPress={handleSignIn}
+          />
         )}
 
         <Action>
