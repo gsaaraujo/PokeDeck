@@ -13,6 +13,6 @@ export const Container = styled.TouchableOpacity`
 
 export const Title = styled.Text`
   font-size: 18px;
-  color: ${theme.colors.buttonTitle};
-  font-family: ${theme.fonts.buttonTitle};
+  color: ${theme.colors.buttonText};
+  font-family: ${theme.fonts.buttonText};
 `;

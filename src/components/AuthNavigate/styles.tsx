@@ -9,8 +9,8 @@ export const Container = styled.TouchableOpacity`
 export const Title = styled.Text`
   font-size: 18px;
   text-align: center;
-  color: ${theme.colors.heading100};
-  font-family: ${theme.fonts.title};
+  color: ${theme.colors.textColor100};
+  font-family: ${theme.fonts.header};
   padding-top: 20px;
   padding-bottom: 20px;
 `;

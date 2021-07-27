@@ -5,9 +5,9 @@ export const theme = {
 
     background: '#FFFFFF',
 
-    heading100: '#464646',
-    heading50: '#818490',
-    buttonTitle: '#F3F3F3',
+    textColor100: '#464646',
+    textColor50: '#818490',
+    buttonText: '#F3F3F3',
     warning: '#F95B5B',
 
     highlight: '#27AE60',
@@ -18,13 +18,13 @@ export const theme = {
   },
 
   fonts: {
-    title: 'FiraMono-Medium',
-    titleBold: 'FiraMono-bold',
+    header: 'FiraMono-Medium',
+    headerBold: 'FiraMono-Bold',
 
-    buttonTitle: 'FiraMono-Medium',
+    buttonText: 'FiraMono-Medium',
     placeholder: 'Inter-Regular',
 
-    heading100: 'Inter-Bold',
-    heading50: 'Inter-Medium',
+    textFont100: 'Inter-Bold',
+    textFont50: 'Inter-Medium',
   },
 };

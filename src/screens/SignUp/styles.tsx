@@ -10,8 +10,8 @@ export const Container = styled.Pressable`
 export const Title = styled.Text`
   font-size: 36px;
   text-align: center;
-  font-family: ${theme.fonts.title};
-  color: ${theme.colors.heading100};
+  font-family: ${theme.fonts.header};
+  color: ${theme.colors.textColor100};
 `;
 
 export const Content = styled.View`

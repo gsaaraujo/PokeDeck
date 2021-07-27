@@ -15,15 +15,15 @@ export const Content = styled.View`
 export const Title = styled.Text`
   font-size: 36px;
   text-align: center;
-  font-family: ${theme.fonts.title};
-  color: ${theme.colors.heading100};
+  font-family: ${theme.fonts.header};
+  color: ${theme.colors.textColor100};
 `;
 
 export const Subtitle = styled.Text`
   font-size: 16px;
   align-self: flex-end;
-  color: ${theme.colors.heading100};
-  font-family: ${theme.fonts.heading50};
+  color: ${theme.colors.textColor100};
+  font-family: ${theme.fonts.textFont50};
 `;
 
 export const Action = styled.TouchableOpacity`
@@ -47,7 +47,7 @@ export const Line = styled.View`
 export const LineTitle = styled.Text`
   font-size: 18px;
   color: ${theme.colors.placeholder};
-  font-family: ${theme.fonts.heading50};
+  font-family: ${theme.fonts.textFont50};
 `;
 
 export const ActionContainer = styled.View`
