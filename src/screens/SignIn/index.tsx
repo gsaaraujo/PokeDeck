@@ -158,7 +158,7 @@ export const SignIn = () => {
         </LineContainer>
 
         <ActionContainer>
-          <Action onPress={handleAuthentication}>
+          <Action testID='Button.GoogleAuth' onPress={handleAuthentication}>
             <GoogleSVG />
           </Action>
         </ActionContainer>
