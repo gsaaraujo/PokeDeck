@@ -72,7 +72,7 @@ export const AuthProvider = ({ children }: ChildrenProps) => {
 
       const userDataJson = JSON.stringify(userData.data);
 
-      AsyncStorage.setItem(USER, userDataJson);
+      await AsyncStorage.setItem(USER, userDataJson);
       setUser(userData.data);
     } catch (error) {
       setIsLoading(false);

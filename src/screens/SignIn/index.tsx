@@ -108,7 +108,7 @@ export const SignIn = () => {
         const accessToken = matches[1];
         const accessTokenJson = JSON.stringify(accessToken);
 
-        AsyncStorage.setItem(ACCESS_TOKEN, accessTokenJson);
+        await AsyncStorage.setItem(ACCESS_TOKEN, accessTokenJson);
 
         handleIsLoading(false);
       }
