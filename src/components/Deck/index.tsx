@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, PressableProps } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import { theme } from '../../global/styles/theme';
 
@@ -8,32 +8,40 @@ import Pokeball from '../../assets/images/pokeball.svg';
 
 import { Container, IconWrapper, DeckInfo, Text, Overlay } from './styles';
 
-type Props = PressableProps & {
+type Deck = {
+  id: string;
   text: string;
-  pokemonAmount: number;
+  amountPokemon: number;
+};
+
+type Props = {
+  deckInfo: Deck;
   isSelected?: boolean;
+  handleLongPressDeck: (deckId: string) => void;
 };
 
 export const Deck = ({
-  text,
-  pokemonAmount,
+  deckInfo,
   isSelected = false,
-  ...rest
+  handleLongPressDeck,
 }: Props) => {
   const { textFont100, textFont50 } = theme.fonts;
 
   return (
-    <Container style={({ pressed }) => pressed && styles.pressed} {...rest}>
+    <Container
+      style={({ pressed }) => pressed && styles.pressed}
+      onLongPress={() => handleLongPressDeck(deckInfo.id)}
+      delayLongPress={300}>
       <IconWrapper>
         <PikachuSVG />
       </IconWrapper>
 
       <DeckInfo>
         <Text font={textFont100} size={16}>
-          {text}
+          {deckInfo.text}
         </Text>
         <Text font={textFont50} size={14}>
-          {pokemonAmount} pokémon
+          {deckInfo.amountPokemon} pokémon
         </Text>
       </DeckInfo>
       {isSelected && (
