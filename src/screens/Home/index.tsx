@@ -102,7 +102,7 @@ export const Home = () => {
       </Header>
 
       <DeckList>
-        <DeckListHeader text='Your decks' subtext='Total 0' />
+        <DeckListHeader text='Your decks' amount={decksCollection.length} />
 
         {decksCollection.length == 0 ? (
           <EmptyDeckList>
