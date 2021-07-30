@@ -11,6 +11,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Deck } from '../../components/Deck';
 import { DeckListHeader } from '../../components/DeckListHeader';
 import { FadeInOutButton } from '../../components/FadeInOutButton';
+import { EmptyListMessage } from '../../components/EmptyListMessage';
 
 import {
   Container,
@@ -19,8 +20,6 @@ import {
   Avatar,
   UserInfo,
   Text,
-  EmptyDeckList,
-  EmptyDeckListMessage,
   DeckList,
   Footer,
 } from './styles';
@@ -105,12 +104,10 @@ export const Home = () => {
         <DeckListHeader text='Your decks' amount={decksCollection.length} />
 
         {decksCollection.length == 0 ? (
-          <EmptyDeckList>
-            <EmptyDeckListMessage>
-              You might want create{'\n'}
-              some decks !
-            </EmptyDeckListMessage>
-          </EmptyDeckList>
+          <EmptyListMessage
+            text='You might want
+            create some decks !'
+          />
         ) : (
           <FlatList
             data={decksCollection}

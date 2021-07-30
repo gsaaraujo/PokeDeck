@@ -45,18 +45,6 @@ export const Bold = styled.Text`
   font-size: ${theme.fonts.headerBold};
 `;
 
-export const EmptyDeckList = styled.View`
-  flex: 1;
-  justify-content: center;
-`;
-
-export const EmptyDeckListMessage = styled.Text`
-  font-size: 18px;
-  text-align: center;
-  font-family: ${theme.fonts.header};
-  color: ${theme.colors.textColor50};
-`;
-
 export const DeckList = styled.View`
   flex: 1;
   top: -50px;
