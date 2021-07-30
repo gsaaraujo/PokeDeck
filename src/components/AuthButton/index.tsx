@@ -1,16 +1,17 @@
 import React from 'react';
-import { TouchableOpacityProps } from 'react-native';
 
-import { Container, Title } from './styles';
+import { Container, Text } from './styles';
 
-type Props = TouchableOpacityProps & {
-  title: string;
+type Props = {
+  testID?: string;
+  text: string;
+  handlePressButton: () => void;
 };
 
-export const AuthButton = ({ title, ...rest }: Props) => {
+export const AuthButton = ({ text, handlePressButton }: Props) => {
   return (
-    <Container {...rest}>
-      <Title>{title}</Title>
+    <Container onPress={handlePressButton}>
+      <Text>{text}</Text>
     </Container>
   );
 };

@@ -6,7 +6,7 @@ export const Container = styled.TouchableOpacity`
   padding-top: 7px;
 `;
 
-export const Title = styled.Text`
+export const Text = styled.Text`
   font-size: 18px;
   text-align: center;
   color: ${theme.colors.textColor100};

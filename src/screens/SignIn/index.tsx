@@ -121,13 +121,13 @@ export const SignIn = () => {
 
       <Content>
         <Input
-          title='Username'
+          text='Username'
           hasText={!!username}
           maxLength={50}
           onChangeText={username => handleUsername(username)}
         />
         <Input
-          title='Password'
+          text='Password'
           hasText={!!password}
           hasIcon
           isShowPassword
@@ -142,8 +142,8 @@ export const SignIn = () => {
         ) : (
           <AuthButton
             testID='Button.SignIn'
-            title='Sign In'
-            onPress={handleSignIn}
+            text='Sign In'
+            handlePressButton={handleSignIn}
           />
         )}
 
@@ -165,9 +165,9 @@ export const SignIn = () => {
       </Content>
 
       <AuthNavigate
-        title="Don't have an account?"
+        text="Don't have an account?"
         highlight='Sign Up'
-        onPress={handleSignUp}
+        handlePressButton={handleSignUp}
       />
     </Container>
   );

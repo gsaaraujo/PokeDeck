@@ -1,19 +1,19 @@
 import React from 'react';
-import { TouchableOpacityProps } from 'react-native';
 
-import { Container, Title, Highlight } from './styles';
+import { Container, Text, Highlight } from './styles';
 
-type Props = TouchableOpacityProps & {
-  title: string;
+type Props = {
+  text: string;
   highlight: string;
+  handlePressButton: () => void;
 };
 
-export const AuthNavigate = ({ title, highlight, ...rest }: Props) => {
+export const AuthNavigate = ({ text, highlight, handlePressButton }: Props) => {
   return (
-    <Container {...rest}>
-      <Title>
-        {title} <Highlight>{highlight}</Highlight>
-      </Title>
+    <Container onPress={handlePressButton}>
+      <Text>
+        {text} <Highlight>{highlight}</Highlight>
+      </Text>
     </Container>
   );
 };

@@ -11,7 +11,7 @@ export const Container = styled.TouchableOpacity`
   background-color: ${theme.colors.button};
 `;
 
-export const Title = styled.Text`
+export const Text = styled.Text`
   font-size: 18px;
   color: ${theme.colors.buttonText};
   font-family: ${theme.fonts.buttonText};

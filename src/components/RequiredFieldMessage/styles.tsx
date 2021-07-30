@@ -8,7 +8,7 @@ export const Container = styled.View`
   position: relative;
 `;
 
-export const Title = styled.Text`
+export const Text = styled.Text`
   font-size: 14px;
   color: ${theme.colors.warning};
   font-family: ${theme.fonts.textFont100};

@@ -70,17 +70,17 @@ export const SignUp = () => {
 
       <Content>
         <Input
-          title='Username'
+          text='Username'
           hasText={!!username}
           onChangeText={username => handleUsername(username)}
         />
         <Input
-          title='Email'
+          text='Email'
           hasText={!!email}
           onChangeText={email => handleEmail(email)}
         />
         <Input
-          title='Password'
+          text='Password'
           hasText={!!password}
           onChangeText={password => handlePassword(password)}
           hasIcon
@@ -92,14 +92,14 @@ export const SignUp = () => {
         {isLoading ? (
           <ActivityIndicator color={highlight} size='large' />
         ) : (
-          <AuthButton title='Sign In' onPress={handleSignUp} />
+          <AuthButton text='Sign In' handlePressButton={handleSignUp} />
         )}
       </Content>
 
       <AuthNavigate
-        title='Already have an account?'
+        text='Already have an account?'
         highlight='Sign In'
-        onPress={handleSignIn}
+        handlePressButton={handleSignIn}
       />
     </Container>
   );

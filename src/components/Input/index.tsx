@@ -9,14 +9,14 @@ import EyeOffSVG from '../../assets/images/eye-off.svg';
 import { Container, TextInput, IconWrapper } from './styles';
 
 type Props = TextInputProps & {
-  title: string;
+  text: string;
   hasText: boolean;
   hasIcon?: boolean;
   isShowPassword?: boolean;
 };
 
 export const Input = ({
-  title,
+  text,
   hasText,
   hasIcon = false,
   isShowPassword = false,
@@ -45,7 +45,7 @@ export const Input = ({
   return (
     <Container>
       <TextInput
-        placeholder={title}
+        placeholder={text}
         color={isFocused || isFilled ? highlight : placeholder}
         onFocus={handleIsFocused}
         onBlur={() => handleIsFilled(hasText)}

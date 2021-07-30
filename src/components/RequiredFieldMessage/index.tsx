@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Container, Title } from './styles';
+import { Container, Text } from './styles';
 
 type Props = {
   isRequiredFieldMessage?: boolean;
@@ -11,9 +11,9 @@ export const RequiredFieldMessage = ({
 }: Props) => {
   return (
     <Container>
-      <Title>
+      <Text>
         {isRequiredFieldMessage && '* Please all fields are required'}
-      </Title>
+      </Text>
     </Container>
   );
 };
