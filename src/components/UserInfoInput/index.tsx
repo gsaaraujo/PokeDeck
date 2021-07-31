@@ -15,7 +15,7 @@ type Props = TextInputProps & {
   isShowPassword?: boolean;
 };
 
-export const Input = ({
+export const UserInfoInput = ({
   text,
   hasText,
   hasIcon = false,

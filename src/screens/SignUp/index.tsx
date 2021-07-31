@@ -3,9 +3,9 @@ import { Keyboard, ActivityIndicator, Alert } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
 
-import { Input } from '../../components/Input';
 import { AuthButton } from '../../components/AuthButton';
 import { AuthNavigate } from '../../components/AuthNavigate';
+import { UserInfoInput } from '../../components/UserInfoInput';
 import { RequiredFieldMessage } from '../../components/RequiredFieldMessage';
 
 import { theme } from '../../global/styles/theme';
@@ -69,17 +69,17 @@ export const SignUp = () => {
       <Title>Sign Up</Title>
 
       <Content>
-        <Input
+        <UserInfoInput
           text='Username'
           hasText={!!username}
           onChangeText={username => handleUsername(username)}
         />
-        <Input
+        <UserInfoInput
           text='Email'
           hasText={!!email}
           onChangeText={email => handleEmail(email)}
         />
-        <Input
+        <UserInfoInput
           text='Password'
           hasText={!!password}
           onChangeText={password => handlePassword(password)}

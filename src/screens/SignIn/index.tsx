@@ -18,9 +18,9 @@ import {
 
 import { useAuth } from '../../hooks/useAuth';
 
-import { Input } from '../../components/Input';
 import { AuthButton } from '../../components/AuthButton';
 import { AuthNavigate } from '../../components/AuthNavigate';
+import { UserInfoInput } from '../../components/UserInfoInput';
 import { RequiredFieldMessage } from '../../components/RequiredFieldMessage';
 
 import {
@@ -120,13 +120,13 @@ export const SignIn = () => {
       <Title>Sign In</Title>
 
       <Content>
-        <Input
+        <UserInfoInput
           text='Username'
           hasText={!!username}
           maxLength={50}
           onChangeText={username => handleUsername(username)}
         />
-        <Input
+        <UserInfoInput
           text='Password'
           hasText={!!password}
           hasIcon
