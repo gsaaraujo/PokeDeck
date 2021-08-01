@@ -8,6 +8,10 @@ type TextProps = {
   size: number;
 };
 
+type ButtonVisibilityProps = {
+  isVisible: boolean;
+};
+
 export const Container = styled.View`
   flex: 1;
 `;
@@ -58,4 +62,8 @@ export const Footer = styled.View`
   flex-direction: row;
   margin-bottom: 30px;
   justify-content: space-between;
+`;
+
+export const ButtonVisibility = styled.View<ButtonVisibilityProps>`
+  opacity: ${props => (props.isVisible ? 1 : 0)};
 `;

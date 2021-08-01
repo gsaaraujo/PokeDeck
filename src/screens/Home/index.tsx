@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Alert, FlatList } from 'react-native';
 
 import { useAuth } from '../../hooks/useAuth';
+import { useDeck } from '../../hooks/useDeck';
 
 import { theme } from '../../global/styles/theme';
 
-import { POKEMON_DECKS } from '../../configs/asyncStorage';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import { CreateDeck } from '../CreateDeck';
 import { Deck } from '../../components/Deck';
+import { ModalView } from '../../components/ModalView';
 import { DeckListHeader } from '../../components/DeckListHeader';
 import { FadeInOutButton } from '../../components/FadeInOutButton';
 import { EmptyListMessage } from '../../components/EmptyListMessage';
@@ -22,27 +22,23 @@ import {
   Text,
   DeckList,
   Footer,
+  ButtonVisibility,
 } from './styles';
-
-type Deck = {
-  id: string;
-  text: string;
-  amountPokemon: number;
-};
 
 export const Home = () => {
   const [deckSelection, setDeckSelection] = useState<string[]>([]);
   const [isButtonVisible, setIsButtonVisible] = useState(false);
-  const [decksCollection, setDecksCollection] = useState<Deck[]>([]);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const { user } = useAuth();
+  const { decksCollection, handleDeleteDeck } = useDeck();
+
   const { header, textFont50 } = theme.fonts;
   const { textColor100 } = theme.colors;
 
   useEffect(() => {
-    handleDecksCollection();
     handleIsButtonVisible();
-  });
+  }, [deckSelection]);
 
   const handleIsButtonVisible = () => {
     deckSelection.length == 0
@@ -50,28 +46,11 @@ export const Home = () => {
       : setIsButtonVisible(true);
   };
 
-  const handleDecksCollection = async () => {
-    const decks = await AsyncStorage.getItem(POKEMON_DECKS).catch(error =>
-      Alert.alert('Not able to restore deck', 'Please try again later'),
-    );
-
-    if (decks) {
-      const deckParse = JSON.parse(decks as string);
-
-      setDecksCollection(deckParse);
-    }
-  };
+  const handleIsModalVisible = () => setIsModalVisible(!isModalVisible);
 
   const handleDeckDelete = async () => {
-    const collectionUpdated = decksCollection.filter(value =>
-      deckSelection.includes(value.id),
-    );
-
-    const collectionUpdatedStringfy = JSON.stringify(collectionUpdated);
-
-    AsyncStorage.setItem(POKEMON_DECKS, collectionUpdatedStringfy).catch(
-      error => Alert.alert('Not able to store deck', 'Please try again later'),
-    );
+    handleDeleteDeck(deckSelection);
+    setDeckSelection([]);
   };
 
   const handleDeckSelection = (deckId: string) => {
@@ -103,12 +82,7 @@ export const Home = () => {
       <DeckList>
         <DeckListHeader text='Your decks' amount={decksCollection.length} />
 
-        {decksCollection.length == 0 ? (
-          <EmptyListMessage
-            text='You might want
-            create some decks !'
-          />
-        ) : (
+        {decksCollection.length ? (
           <FlatList
             data={decksCollection}
             style={{ marginTop: 47 }}
@@ -125,21 +99,29 @@ export const Home = () => {
             }}
             showsVerticalScrollIndicator={false}
           />
+        ) : (
+          <EmptyListMessage
+            text='You might want
+              create some decks !'
+          />
         )}
       </DeckList>
 
       <Footer>
-        {isButtonVisible && (
+        <ButtonVisibility isVisible={isButtonVisible}>
           <FadeInOutButton text='delete' handlePressButton={handleDeckDelete} />
-        )}
-        {isButtonVisible && (
-          <FadeInOutButton
-            text='share'
-            isAlignRight
-            handlePressButton={() => {}}
-          />
-        )}
+        </ButtonVisibility>
+
+        <FadeInOutButton
+          text='create'
+          isAlignRight
+          handlePressButton={handleIsModalVisible}
+        />
       </Footer>
+
+      <ModalView visible={isModalVisible}>
+        <CreateDeck handleIsModalVisible={handleIsModalVisible} />
+      </ModalView>
     </Container>
   );
 };
