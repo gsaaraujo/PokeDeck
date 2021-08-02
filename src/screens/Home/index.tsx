@@ -56,8 +56,8 @@ export const Home = () => {
     setDeckSelection([]);
   };
 
-  const handleNavigateToMyDeck = (deckId: string) =>
-    navigate('MyDeck', { deckId });
+  const handleNavigateToMyDeck = (deckId: string, deckName: string) =>
+    navigate('MyDeck', { deckId, deckName });
 
   const handleDeckSelection = (deckId: string) => {
     const isAlreadyInArray = deckSelection.includes(deckId);

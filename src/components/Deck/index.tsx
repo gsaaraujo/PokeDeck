@@ -13,7 +13,7 @@ import { Container, IconWrapper, DeckInfo, Text, Overlay } from './styles';
 type Props = {
   deckInfo: UserDeck;
   isSelected?: boolean;
-  handlePressDeck: (deckId: string) => void;
+  handlePressDeck: (deckId: string, deckName: string) => void;
   handleLongPressDeck: (deckId: string) => void;
 };
 
@@ -29,7 +29,7 @@ export const Deck = ({
     <Container
       style={({ pressed }) => pressed && styles.pressed}
       onLongPress={() => handleLongPressDeck(deckInfo.id)}
-      onPress={() => handlePressDeck(deckInfo.id)}
+      onPress={() => handlePressDeck(deckInfo.id, deckInfo.name)}
       delayLongPress={300}>
       <IconWrapper>
         <PikachuSVG />

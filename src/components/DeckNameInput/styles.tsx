@@ -11,7 +11,7 @@ export const Container = styled.TextInput.attrs<TextInputProps>({
   font-size: 18px;
   padding-left: 20px;
   border-radius: 20px;
-  color: ${theme.colors.placeholder};
+  color: ${theme.colors.textColor100};
   font-family: ${theme.fonts.placeholder};
   border: 2px solid ${theme.colors.placeholder};
 `;
