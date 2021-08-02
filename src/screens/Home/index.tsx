@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Alert, FlatList } from 'react-native';
+import { FlatList } from 'react-native';
+
+import { useNavigation } from '@react-navigation/native';
 
 import { useAuth } from '../../hooks/useAuth';
 import { useDeck } from '../../hooks/useDeck';
@@ -31,6 +33,7 @@ export const Home = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const { user } = useAuth();
+  const { navigate } = useNavigation();
   const { decksCollection, handleDeleteDeck } = useDeck();
 
   const { header, textFont50 } = theme.fonts;
@@ -52,6 +55,9 @@ export const Home = () => {
     handleDeleteDeck(deckSelection);
     setDeckSelection([]);
   };
+
+  const handleNavigateToMyDeck = (deckId: string) =>
+    navigate('MyDeck', { deckId });
 
   const handleDeckSelection = (deckId: string) => {
     const isAlreadyInArray = deckSelection.includes(deckId);
@@ -91,6 +97,7 @@ export const Home = () => {
               <Deck
                 deckInfo={item}
                 handleLongPressDeck={handleDeckSelection}
+                handlePressDeck={handleNavigateToMyDeck}
                 isSelected={deckSelection.includes(item.id)}
               />
             )}
