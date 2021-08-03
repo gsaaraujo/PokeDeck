@@ -1,49 +1,43 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
 
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import { Home } from '../screens/Home';
-import { SearchPokemon } from '../screens/SearchPokemon';
-
-import HomeSVG from '../assets/images/home.svg';
-import SearchSVG from '../assets/images/search.svg';
+import { MyDeck } from '../screens/MyDeck';
+import { ChooseCards } from '../screens/ChooseCards';
 
 import { theme } from '../global/styles/theme';
 
 export const AppRoutes = () => {
-  const { Navigator, Screen } = createBottomTabNavigator();
-  const { header, background, bottomTab, highlight, textColor100 } =
-    theme.colors;
+  const { Navigator, Screen } = createStackNavigator();
+
+  const { header, background, textColor100 } = theme.colors;
 
   return (
     <>
       <StatusBar barStyle='dark-content' backgroundColor={header} />
       <Navigator
-        tabBarOptions={{
-          style: {
-            backgroundColor: bottomTab,
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: header,
           },
-          showLabel: false,
-        }}
-        sceneContainerStyle={{ backgroundColor: background }}>
+          headerTintColor: textColor100,
+          headerTitleAlign: 'center',
+          cardStyle: {
+            backgroundColor: background,
+          },
+        }}>
+        <Screen name='Home' component={Home} />
         <Screen
-          name='Home'
-          component={Home}
-          options={{
-            tabBarIcon: ({ focused }) => (
-              <HomeSVG fill={focused ? textColor100 : 'none'} />
-            ),
-          }}
+          name='MyDeck'
+          component={MyDeck}
+          options={{ title: 'My deck' }}
         />
         <Screen
-          name='SearchPokemon'
-          component={SearchPokemon}
-          options={{
-            tabBarIcon: ({ focused }) => (
-              <SearchSVG fill={focused ? textColor100 : 'none'} />
-            ),
-          }}
+          name='ChooseCards'
+          component={ChooseCards}
+          options={{ title: 'Choose your cards' }}
         />
       </Navigator>
     </>

@@ -2,8 +2,8 @@ import React from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
 
+import { AppRoutes } from './app.routes';
 import { AuthRoutes } from './auth.routes';
-import { AddCards } from './addCards.routes';
 
 import { useAuth } from '../hooks/useAuth';
 import { DeckProvider } from '../context/deck';
@@ -15,7 +15,7 @@ export const Routes = () => {
     <NavigationContainer>
       {user.name ? (
         <DeckProvider>
-          <AddCards />
+          <AppRoutes />
         </DeckProvider>
       ) : (
         <AuthRoutes />
