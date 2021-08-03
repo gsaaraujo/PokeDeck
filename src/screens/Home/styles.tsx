@@ -57,10 +57,11 @@ export const DeckList = styled.View`
   background-color: ${theme.colors.background};
 `;
 
-export const Footer = styled.View`
+export const ButtonContainer = styled.View`
   height: 50px;
+  margin-right: 25px;
+  margin-bottom: 50px;
   flex-direction: row;
-  margin-bottom: 30px;
   justify-content: space-between;
 `;
 

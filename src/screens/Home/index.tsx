@@ -8,6 +8,8 @@ import { useDeck } from '../../hooks/useDeck';
 
 import { theme } from '../../global/styles/theme';
 
+import PlusSVG from '../../assets/images/plus.svg';
+
 import { CreateDeck } from '../CreateDeck';
 import { Deck } from '../../components/Deck';
 import { ModalView } from '../../components/ModalView';
@@ -23,9 +25,10 @@ import {
   UserInfo,
   Text,
   DeckList,
-  Footer,
+  ButtonContainer,
   ButtonVisibility,
 } from './styles';
+import { CreateButton } from '../../components/CreateButton';
 
 export const Home = () => {
   const [deckSelection, setDeckSelection] = useState<string[]>([]);
@@ -114,17 +117,13 @@ export const Home = () => {
         )}
       </DeckList>
 
-      <Footer>
+      <ButtonContainer>
         <ButtonVisibility isVisible={isButtonVisible}>
           <FadeInOutButton text='delete' handlePressButton={handleDeckDelete} />
         </ButtonVisibility>
 
-        <FadeInOutButton
-          text='create'
-          isAlignRight
-          handlePressButton={handleIsModalVisible}
-        />
-      </Footer>
+        <CreateButton handlePressButton={handleIsModalVisible} />
+      </ButtonContainer>
 
       <ModalView visible={isModalVisible}>
         <CreateDeck handleIsModalVisible={handleIsModalVisible} />
