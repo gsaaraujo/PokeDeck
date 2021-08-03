@@ -21,6 +21,7 @@ type Data = {
   decksCollection: UserDeck[];
   handleSetDecksCollection: (newDeck: UserDeck) => void;
   handleDeleteDeck: (deckId: string[]) => void;
+  handleUpdateDeck: (updatedDeck: UserDeck) => void;
 };
 
 type ChildrenProps = {
@@ -61,6 +62,23 @@ export const DeckProvider = ({ children }: ChildrenProps) => {
     handleGetDecksColletion();
   };
 
+  const handleUpdateDeck = async (updatedDeck: UserDeck) => {
+    const decks = await AsyncStorage.getItem(POKEMON_DECKS);
+
+    if (decks) {
+      const decksParse: UserDeck[] = JSON.parse(decks);
+      const matchIndex = decksParse.findIndex(
+        deck => deck.id === updatedDeck.id,
+      );
+
+      decksParse[matchIndex].name = updatedDeck.name;
+
+      await AsyncStorage.setItem(POKEMON_DECKS, JSON.stringify(decksParse));
+    }
+
+    handleGetDecksColletion();
+  };
+
   const handleDeleteDeck = async (deckId: string[]) => {
     const decks = await AsyncStorage.getItem(POKEMON_DECKS);
 
@@ -76,7 +94,12 @@ export const DeckProvider = ({ children }: ChildrenProps) => {
 
   return (
     <DeckContext.Provider
-      value={{ decksCollection, handleSetDecksCollection, handleDeleteDeck }}>
+      value={{
+        decksCollection,
+        handleSetDecksCollection,
+        handleDeleteDeck,
+        handleUpdateDeck,
+      }}>
       {children}
     </DeckContext.Provider>
   );
