@@ -30,12 +30,3 @@ export const Text = styled.Text<TextProps>`
   font-size: ${props => props.size}px;
   font-family: ${props => props.font};
 `;
-
-export const Overlay = styled.View`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(255, 255, 255, 0.4);
-`;

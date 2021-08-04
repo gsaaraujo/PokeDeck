@@ -3,12 +3,13 @@ import { StyleSheet } from 'react-native';
 
 import { theme } from '../../global/styles/theme';
 
-import Pokeball from '../../assets/images/pokeball.svg';
 import PikachuSVG from '../../assets/images/pikachu.svg';
 
 import { UserDeck } from '../../context/deck';
 
-import { Container, IconWrapper, DeckInfo, Text, Overlay } from './styles';
+import { SelectOverlay } from '../../components/SelectOverlay';
+
+import { Container, IconWrapper, DeckInfo, Text } from './styles';
 
 type Props = {
   deckInfo: UserDeck;
@@ -43,11 +44,7 @@ export const Deck = ({
           {deckInfo.cards.length} pokémon
         </Text>
       </DeckInfo>
-      {isSelected && (
-        <Overlay>
-          <Pokeball />
-        </Overlay>
-      )}
+      {isSelected && <SelectOverlay />}
     </Container>
   );
 };
