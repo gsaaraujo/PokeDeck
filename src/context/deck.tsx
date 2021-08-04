@@ -4,9 +4,10 @@ import { POKEMON_DECKS } from '../configs/asyncStorage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export type UserCard = {
+  id: string;
   picture: string;
   name: string;
-  type: string;
+  type: string[];
   weight: number;
   height: number;
 };
