@@ -1,13 +1,18 @@
 import React from 'react';
 
-import Pokeball from '../../assets/images/pokeball.svg';
+import PokeballSVG from '../../assets/images/pokeball.svg';
+import PokeballNormalSVG from '../../assets/images/pokeballNormal.svg';
 
 import { Container } from './styles';
 
-export const SelectOverlay = () => {
+type Props = {
+  normalIcon?: boolean;
+};
+
+export const SelectOverlay = ({ normalIcon = false }: Props) => {
   return (
     <Container>
-      <Pokeball />
+      {normalIcon ? <PokeballNormalSVG /> : <PokeballSVG />}
     </Container>
   );
 };
