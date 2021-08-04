@@ -1,4 +1,4 @@
-export const pokemonTypes = [
+export const pokemonTypesPartOne = [
   { id: '1', type: 'normal', color: '#CA98A6', borderColor: '#75525C' },
 
   { id: '2', type: 'poison', color: '#9B69DA', borderColor: '#5E2D89' },
@@ -7,7 +7,7 @@ export const pokemonTypes = [
 
   { id: '4', type: 'rock', color: '#8B3E22', borderColor: '#48190B' },
 
-  { id: '5', type: 'steel', color: '#43BD94', borderColor: '#60756E' },
+  { id: '5', type: 'steel', color: '#afb3b6', borderColor: '#6d7478' },
 
   { id: '6', type: 'psychic', color: '#FF46A9', borderColor: '#A52A6C' },
 
@@ -16,7 +16,9 @@ export const pokemonTypes = [
   { id: '8', type: 'dragon', color: '#62CAD9', borderColor: '#448A95' },
 
   { id: '9', type: 'fighting', color: '#EF6239', borderColor: '#994025' },
+];
 
+export const pokemonTypesPartTwo = [
   { id: '10', type: 'fire', color: '#FF5462', borderColor: '#AB1F24' },
 
   { id: '11', type: 'electric', color: '#FFDB6F', borderColor: '#F2994A' },
