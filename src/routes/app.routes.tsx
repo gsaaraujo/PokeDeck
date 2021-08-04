@@ -28,7 +28,7 @@ export const AppRoutes = () => {
             backgroundColor: background,
           },
         }}>
-        <Screen name='Home' component={Home} />
+        <Screen name='Home' component={Home} options={{ headerShown: false }} />
         <Screen
           name='MyDeck'
           component={MyDeck}
