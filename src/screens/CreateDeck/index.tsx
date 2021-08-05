@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Keyboard } from 'react-native';
 
 import uuid from 'react-native-uuid';
 
@@ -39,7 +38,7 @@ export const CreateDeck = ({ handleIsModalVisible }: Props) => {
   };
 
   return (
-    <Container onPress={() => Keyboard.dismiss()}>
+    <Container>
       <Content>
         <CloseModalButton handleIsModalVisible={handleIsModalVisible} />
 
