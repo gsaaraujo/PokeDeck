@@ -47,7 +47,7 @@ export const Card = ({
     const pokemonTypes = pokemonTypesPartOne.concat(pokemonTypesPartTwo);
 
     const matchType = pokemonTypes.filter(value =>
-      cardInfo.type.includes(value.type),
+      cardInfo.types.includes(value.type),
     );
 
     if (matchType) {
@@ -77,9 +77,13 @@ export const Card = ({
       />
 
       <Content>
-        <Text>{cardInfo.name}</Text>
+        <Text>{cardInfo.name[0].toUpperCase() + cardInfo.name.slice(1)}</Text>
         <SvgUri uri={cardInfo.picture} width={65} height={65} />
-        <Text>{cardInfo.type}</Text>
+        <Text>
+          {cardInfo.types.length == 1
+            ? cardInfo.types
+            : `${cardInfo.types[0]} * ${cardInfo.types[1]}`}
+        </Text>
       </Content>
 
       {isSelected && (
