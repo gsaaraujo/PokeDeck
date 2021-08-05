@@ -11,7 +11,8 @@ import { UserDeck } from '../../context/deck';
 
 import { DeckNameInput } from '../../components/DeckNameInput';
 
-import { Container, Content, WrapperIcon, Text, CreateButton } from './styles';
+import { Container, Content, Text, CreateButton } from './styles';
+import { CloseModalButton } from '../../components/CloseModalButton';
 
 type Props = {
   handleIsModalVisible: () => void;
@@ -40,9 +41,7 @@ export const CreateDeck = ({ handleIsModalVisible }: Props) => {
   return (
     <Container onPress={() => Keyboard.dismiss()}>
       <Content>
-        <WrapperIcon onPress={handleIsModalVisible}>
-          <ExitSVG height={56} width={56} />
-        </WrapperIcon>
+        <CloseModalButton handleIsModalVisible={handleIsModalVisible} />
 
         <DeckNameInput handleInputText={handleDeckName} />
 

@@ -20,10 +20,6 @@ export const Content = styled.View`
   background-color: ${theme.colors.background};
 `;
 
-export const WrapperIcon = styled.TouchableOpacity`
-  align-self: center;
-`;
-
 export const Text = styled.Text<TextProps>`
   font-size: 18px;
   text-align: center;
