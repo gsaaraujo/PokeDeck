@@ -5,7 +5,6 @@ import { theme } from '../../global/styles/theme';
 
 export const Container = styled.TextInput.attrs<TextInputProps>({
   maxLength: 25,
-  placeholder: 'Your deck name',
   placeholderTextColor: theme.colors.placeholder,
 })`
   font-size: 18px;

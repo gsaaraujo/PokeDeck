@@ -42,7 +42,10 @@ export const CreateDeck = ({ handleIsModalVisible }: Props) => {
       <Content>
         <CloseModalButton handleIsModalVisible={handleIsModalVisible} />
 
-        <DeckNameInput handleInputText={handleDeckName} />
+        <DeckNameInput
+          placeholder='Your deck name'
+          handleInputText={handleDeckName}
+        />
 
         <Text color={textColor50}>
           Write your deck name{'\n'}
