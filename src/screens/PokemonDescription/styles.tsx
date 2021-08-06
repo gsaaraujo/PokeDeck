@@ -32,6 +32,13 @@ export const Text = styled.Text<TextProps>`
   font-family: ${theme.fonts.textFont50};
 `;
 
+export const IconWrapper = styled.View`
+  width: 150px;
+  height: 150px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+`;
+
 export const Characteristic = styled.View`
   width: 100%;
   flex-direction: row;

@@ -11,9 +11,8 @@ type ContainerProps = {
 
 export const Container = styled.Pressable<ContainerProps>`
   width: 31%;
+  margin: 5px;
   height: 150px;
-  overflow: hidden;
-  margin-bottom: 4%;
   border-radius: 10px;
   border: 2px solid ${props => props.borderColor};
 `;
@@ -29,6 +28,11 @@ export const Content = styled.View`
   position: absolute;
   align-items: center;
   justify-content: space-around;
+`;
+
+export const IconWrapper = styled.View`
+  width: 65px;
+  height: 65px;
 `;
 
 export const Text = styled.Text`

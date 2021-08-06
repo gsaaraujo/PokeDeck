@@ -17,6 +17,7 @@ import {
   Container,
   BackgroundTypeColor,
   Content,
+  IconWrapper,
   Text,
   Overlay,
 } from './styles';
@@ -24,7 +25,6 @@ import {
 type Props = {
   cardInfo: UserCard;
   isSelected: boolean;
-  handlePressButton: () => void;
   handleLongPressButton: (cardInfo: UserCard) => void;
 };
 
@@ -66,6 +66,7 @@ export const Card = ({
     <Container
       borderColor={borderColors.length == 2 ? '#464646' : borderColors[0]}
       onLongPress={() => handleLongPressButton(cardInfo)}
+      delayLongPress={250}
       onPress={handleIsModalVisible}>
       <BackgroundTypeColor backgroundColor={backgroundColors[0]} />
       <BackgroundTypeColor
@@ -78,7 +79,11 @@ export const Card = ({
 
       <Content>
         <Text>{cardInfo.name[0].toUpperCase() + cardInfo.name.slice(1)}</Text>
-        <SvgUri uri={cardInfo.picture} width={65} height={65} />
+
+        <IconWrapper>
+          <SvgUri uri={cardInfo.picture} width={65} height={65} />
+        </IconWrapper>
+
         <Text>
           {cardInfo.types.length == 1
             ? cardInfo.types

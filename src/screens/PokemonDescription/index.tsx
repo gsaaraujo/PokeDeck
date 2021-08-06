@@ -13,6 +13,7 @@ import {
   Content,
   PokemonContent,
   Text,
+  IconWrapper,
   Characteristic,
   Line,
 } from './styles';
@@ -39,12 +40,9 @@ export const PokemonDescription = ({
             {cardInfo.name[0].toLocaleUpperCase() + cardInfo.name.slice(1)}
           </Text>
 
-          <SvgUri
-            uri={cardInfo.picture}
-            width={150}
-            height={150}
-            style={{ marginVertical: 40 }}
-          />
+          <IconWrapper>
+            <SvgUri uri={cardInfo.picture} width={150} height={150} />
+          </IconWrapper>
 
           <Characteristic>
             <PokemonAttribute text='weight' subtext={[cardInfo.weight / 10]} />
