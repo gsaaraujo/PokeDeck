@@ -68,8 +68,12 @@ export const Card = ({
       onLongPress={() => handleLongPressButton(cardInfo)}
       delayLongPress={250}
       onPress={handleIsModalVisible}>
-      <BackgroundTypeColor backgroundColor={backgroundColors[0]} />
       <BackgroundTypeColor
+        style={{ borderTopLeftRadius: 10, borderTopRightRadius: 10 }}
+        backgroundColor={backgroundColors[0]}
+      />
+      <BackgroundTypeColor
+        style={{ borderBottomLeftRadius: 10, borderBottomRightRadius: 10 }}
         backgroundColor={
           backgroundColors.length == 2
             ? backgroundColors[1]
