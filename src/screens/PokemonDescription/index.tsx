@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { Keyboard } from 'react-native';
+import React from 'react';
 
 import { SvgUri } from 'react-native-svg';
 

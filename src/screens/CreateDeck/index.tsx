@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import uuid from 'react-native-uuid';
 
 import { theme } from '../../global/styles/theme';
-import ExitSVG from '../../assets/images/exit.svg';
 
 import { useDeck } from '../../hooks/useDeck';
 import { UserDeck } from '../../context/deck';

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { FlatList } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
@@ -7,8 +7,6 @@ import { useAuth } from '../../hooks/useAuth';
 import { useDeck } from '../../hooks/useDeck';
 
 import { theme } from '../../global/styles/theme';
-
-import PlusSVG from '../../assets/images/plus.svg';
 
 import { CreateDeck } from '../CreateDeck';
 import { Deck } from '../../components/Deck';
@@ -32,7 +30,6 @@ import { CreateButton } from '../../components/CreateButton';
 
 export const Home = () => {
   const [deckSelection, setDeckSelection] = useState<string[]>([]);
-  const [isButtonVisible, setIsButtonVisible] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const { user } = useAuth();
@@ -41,16 +38,6 @@ export const Home = () => {
 
   const { header, textFont50 } = theme.fonts;
   const { textColor100 } = theme.colors;
-
-  useEffect(() => {
-    handleIsButtonVisible();
-  }, [deckSelection]);
-
-  const handleIsButtonVisible = () => {
-    deckSelection.length == 0
-      ? setIsButtonVisible(false)
-      : setIsButtonVisible(true);
-  };
 
   const handleIsModalVisible = () => setIsModalVisible(!isModalVisible);
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FlatList, Alert, Keyboard } from 'react-native';
+import { FlatList, Keyboard } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
 
