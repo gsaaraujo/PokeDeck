@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { theme } from '../../global/styles/theme';
 
@@ -18,7 +18,7 @@ export const PokemonAttribute = ({ text, subtext }: Props) => {
         {text}
       </Text>
       <Text color={textColor50} size={16}>
-        {subtext.length == 1 ? subtext : `${subtext[0]}\n${subtext[1]}`}
+        {subtext.length == 1 ? `${subtext}` : `${subtext[0]}\n${subtext[1]}`}
       </Text>
     </Container>
   );
