@@ -7,7 +7,7 @@ export type UserCard = {
   id: string;
   picture: string;
   name: string;
-  type: string[];
+  types: string[];
   weight: number;
   height: number;
 };
@@ -23,6 +23,8 @@ type Data = {
   handleSetDecksCollection: (newDeck: UserDeck) => void;
   handleDeleteDeck: (deckId: string[]) => void;
   handleUpdateDeck: (updatedDeck: UserDeck) => void;
+  handleAddCard: (deckId: string, userCard: UserCard[]) => void;
+  handleDeleteCardFromDeck: (deckId: string, userCard: UserCard[]) => void;
 };
 
 type ChildrenProps = {
@@ -93,6 +95,46 @@ export const DeckProvider = ({ children }: ChildrenProps) => {
     handleGetDecksColletion();
   };
 
+  const handleAddCard = async (deckId: string, userCard: UserCard[]) => {
+    const decks = await AsyncStorage.getItem(POKEMON_DECKS);
+
+    if (decks) {
+      const decksParse: UserDeck[] = JSON.parse(decks);
+      const matchIndex = decksParse.findIndex(deck => deck.id === deckId);
+      const currentCards = decksParse[matchIndex].cards;
+
+      decksParse[matchIndex].cards = currentCards.concat(userCard);
+
+      await AsyncStorage.setItem(POKEMON_DECKS, JSON.stringify(decksParse));
+    }
+
+    handleGetDecksColletion();
+  };
+
+  const handleDeleteCardFromDeck = async (
+    deckId: string,
+    userCard: UserCard[],
+  ) => {
+    const decks = await AsyncStorage.getItem(POKEMON_DECKS);
+
+    if (decks) {
+      const decksParse: UserDeck[] = JSON.parse(decks);
+      const matchIndex = decksParse.findIndex(deck => deck.id === deckId);
+
+      let currentCards = decksParse[matchIndex].cards;
+
+      currentCards = currentCards.filter(
+        value => !userCard.find(each => value.id === each.id),
+      );
+
+      decksParse[matchIndex].cards = currentCards;
+
+      await AsyncStorage.setItem(POKEMON_DECKS, JSON.stringify(decksParse));
+    }
+
+    handleGetDecksColletion();
+  };
+
   return (
     <DeckContext.Provider
       value={{
@@ -100,6 +142,8 @@ export const DeckProvider = ({ children }: ChildrenProps) => {
         handleSetDecksCollection,
         handleDeleteDeck,
         handleUpdateDeck,
+        handleAddCard,
+        handleDeleteCardFromDeck,
       }}>
       {children}
     </DeckContext.Provider>
