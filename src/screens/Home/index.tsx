@@ -118,9 +118,11 @@ export const Home = () => {
       </DeckList>
 
       <ButtonContainer>
-        <ButtonVisibility isVisible={isButtonVisible}>
+        {deckSelection.length === 0 ? (
+          <ButtonVisibility />
+        ) : (
           <FadeInOutButton text='delete' handlePressButton={handleDeckDelete} />
-        </ButtonVisibility>
+        )}
 
         <CreateButton handlePressButton={handleIsModalVisible} />
       </ButtonContainer>
