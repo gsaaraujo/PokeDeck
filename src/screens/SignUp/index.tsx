@@ -92,7 +92,11 @@ export const SignUp = () => {
         {isLoading ? (
           <ActivityIndicator color={highlight} size='large' />
         ) : (
-          <AuthButton text='Sign In' handlePressButton={handleSignUp} />
+          <AuthButton
+            testID='Button.SignUp'
+            text='Sign In'
+            handlePressButton={handleSignUp}
+          />
         )}
       </Content>
 
