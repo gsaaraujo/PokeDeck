@@ -118,7 +118,7 @@ export const ChooseCards = ({ route }: any) => {
   };
 
   const handleCardsCollection = async () => {
-    const { data } = await pokeApi.get('/pokemon?limit=100');
+    const { data } = await pokeApi.get('/pokemon?limit=20');
     const allPokemonUrls: Result[] = data.results;
 
     const pokemonCollection = await Promise.all(
