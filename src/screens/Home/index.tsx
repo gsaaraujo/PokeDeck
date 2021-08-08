@@ -8,9 +8,13 @@ import { useDeck } from '../../hooks/useDeck';
 
 import { theme } from '../../global/styles/theme';
 
+import { LogOut } from '../../screens/LogOut';
+
 import { CreateDeck } from '../CreateDeck';
+
 import { Deck } from '../../components/Deck';
 import { ModalView } from '../../components/ModalView';
+import { CreateButton } from '../../components/CreateButton';
 import { DeckListHeader } from '../../components/DeckListHeader';
 import { FadeInOutButton } from '../../components/FadeInOutButton';
 import { EmptyListMessage } from '../../components/EmptyListMessage';
@@ -26,11 +30,12 @@ import {
   ButtonContainer,
   ButtonVisibility,
 } from './styles';
-import { CreateButton } from '../../components/CreateButton';
 
 export const Home = () => {
   const [deckSelection, setDeckSelection] = useState<string[]>([]);
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isCreateDeckModalVisible, setCreateDeckIsModalVisible] =
+    useState(false);
+  const [isLogOutModalVisible, setIsLogOutModalVisible] = useState(false);
 
   const { user } = useAuth();
   const { navigate } = useNavigation();
@@ -39,7 +44,11 @@ export const Home = () => {
   const { header, textFont50 } = theme.fonts;
   const { textColor100 } = theme.colors;
 
-  const handleIsModalVisible = () => setIsModalVisible(!isModalVisible);
+  const handleIsCreateDeckModalVisible = () =>
+    setCreateDeckIsModalVisible(!isCreateDeckModalVisible);
+
+  const handleIsLogOutModalVisible = () =>
+    setIsLogOutModalVisible(!isLogOutModalVisible);
 
   const handleDeckDelete = async () => {
     handleDeleteDeck(deckSelection);
@@ -62,7 +71,7 @@ export const Home = () => {
   return (
     <Container>
       <Header>
-        <Profile>
+        <Profile onPress={handleIsLogOutModalVisible}>
           <Avatar source={{ uri: user.picture }} />
           <UserInfo>
             <Text font={header} color={textColor100} size={20}>
@@ -111,11 +120,15 @@ export const Home = () => {
           <FadeInOutButton text='delete' handlePressButton={handleDeckDelete} />
         )}
 
-        <CreateButton handlePressButton={handleIsModalVisible} />
+        <CreateButton handlePressButton={handleIsCreateDeckModalVisible} />
       </ButtonContainer>
 
-      <ModalView visible={isModalVisible}>
-        <CreateDeck handleIsModalVisible={handleIsModalVisible} />
+      <ModalView visible={isCreateDeckModalVisible}>
+        <CreateDeck handleIsModalVisible={handleIsCreateDeckModalVisible} />
+      </ModalView>
+
+      <ModalView visible={isLogOutModalVisible}>
+        <LogOut handleIsModalVisible={handleIsLogOutModalVisible} />
       </ModalView>
     </Container>
   );

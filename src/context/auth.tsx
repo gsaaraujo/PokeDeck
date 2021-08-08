@@ -17,6 +17,7 @@ type Data = {
   isLoading: boolean;
   handleIsLoading: (state: boolean) => void;
   handleDBApi: (data: LoginUser) => void;
+  handleLogOut: () => void;
 };
 
 type LoginUser = {
@@ -73,14 +74,26 @@ export const AuthProvider = ({ children }: ChildrenProps) => {
       const userDataJson = JSON.stringify(userData.data);
 
       await AsyncStorage.setItem(USER, userDataJson);
+      
+      await AsyncStorage.setItem(
+        ACCESS_TOKEN,
+        JSON.stringify(userData.data.accessToken),
+      );
+
       setUser(userData.data);
     } catch (error) {
-      setIsLoading(false);
       Alert.alert('Unable to connect', 'Invalid Username or Password');
     }
   };
 
   const handleIsLoading = (state: boolean) => setIsLoading(state);
+
+  const handleLogOut = async () => {
+    await AsyncStorage.removeItem(USER);
+    await AsyncStorage.removeItem(ACCESS_TOKEN);
+
+    setUser({} as User);
+  };
 
   return (
     <AuthContext.Provider
@@ -89,6 +102,7 @@ export const AuthProvider = ({ children }: ChildrenProps) => {
         isLoading,
         handleIsLoading,
         handleDBApi,
+        handleLogOut,
       }}>
       {children}
     </AuthContext.Provider>

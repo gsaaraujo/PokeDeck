@@ -19,7 +19,7 @@ export const Header = styled.View`
   background-color: ${theme.colors.header};
 `;
 
-export const Profile = styled.View`
+export const Profile = styled.TouchableOpacity`
   top: -30px;
   margin-left: 25px;
   flex-direction: row;
