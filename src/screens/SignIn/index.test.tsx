@@ -42,7 +42,9 @@ it('should change placeholder color when field is filled', () => {
   const usernameField = getByPlaceholderText('Username');
   // No need for passwordField, since it should work in the same way
 
+  fireEvent(usernameField, 'focus');
   fireEvent.changeText(usernameField, 'Rengoku');
+  fireEvent(usernameField, 'blur');
 
   expect(usernameField).toHaveStyle({
     borderBottomColor: '#27AE60',

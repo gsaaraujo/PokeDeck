@@ -8,9 +8,9 @@ type Props = {
   handlePressButton: () => void;
 };
 
-export const AuthButton = ({ text, handlePressButton }: Props) => {
+export const AuthButton = ({ text, testID, handlePressButton }: Props) => {
   return (
-    <Container onPress={handlePressButton}>
+    <Container testID={testID} onPress={handlePressButton}>
       <Text>{text}</Text>
     </Container>
   );
