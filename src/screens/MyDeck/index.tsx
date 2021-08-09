@@ -52,7 +52,9 @@ export const MyDeck = ({ route }: any) => {
       value => value.id === currentDeck.deckId,
     ) as UserDeck;
 
-    setCardsCollection(matchDeck.cards);
+    if (matchDeck) {
+      setCardsCollection(matchDeck.cards);
+    }
   };
 
   const handleDeckName = (name: string) => setDeckName(name);
