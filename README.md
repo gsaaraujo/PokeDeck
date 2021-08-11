@@ -1,6 +1,14 @@
-## PokeDeck App - React Native
+<div style="text-align: center">
 
-![cover](.github/PokeDeck.png?style=flat)
+## PokeDeck
+
+![alt PokeDeck](.github/logo.png)
+
+</div>
+
+##
+
+![alt PokeDeck](.github/cover.png)
 
 ## 💡 Purpose
 
@@ -8,7 +16,7 @@ This app was made to serve as a portfolio by showing my skills on these technolo
 
 ## 💻 Project
 
-PokeDeck is about creating your own decks with your favorite pokémon cards. There's a collection of over a thousand pokémon that comes from <a href="https://pokeapi.co/" target="_blank">PokéAPI</a>.
+PokeDeck is about creating your own decks with your favorite pokémon cards. There's a collection of over a thousand pokémon that comes from [PokéAPI](https://pokeapi.co).
 
 ## 🛠️ Features
 
@@ -41,23 +49,32 @@ PokeDeck is about creating your own decks with your favorite pokémon cards. The
 
 ## 🖍️ Layout
 
-PokeDeck layout is available on Figma. You can access<a href="https://www.figma.com/file/rqnLaSXESTIiYBta5Wdf6f/PokeDeck?node-id=0%3A1" target="_blank"> through this link</a>.
+PokeDeck layout is available on Figma. You can access [through this link](https://www.figma.com/file/rqnLaSXESTIiYBta5Wdf6f/PokeDeck?node-id=0%3A1).
 
 ## 🚩 Getting Started
 
-In case if you don't have your development environment setting up, check this <a href="https://reactnative.dev/docs/environment-setup" target="_blank"> React Native Documentation</a> to learn how to do so.
+In case if you don't have your development environment setting up, check this [React Native Documentation](https://reactnative.dev/docs/environment-setup) to learn how to do so.
 
 Clone this project repository
-`git clone https://github.com/gsaaraujo/PokeDeck.git`
+
+```
+git clone https://github.com/gsaaraujo/PokeDeck.git
+```
 
 Type **yarn install** or **npm install** to install all dependencies.
 
 After, run:
-`yarn start`
+
+```
+yarn start
+```
 
 And:
-`yarn android`
 
-**Important:** In order to use Google OAuth2, you need to register your own credentials on <a href="https://console.cloud.google.com/apis/credentials?folder=&organizationId=&project=seismic-fx-321400" target="_blank">this link</a> and use them on _.env-example_ file.
+```
+yarn android
+```
+
+**Important:** In order to use Google OAuth2, you need to register your own credentials on [Google Cloud API](https://console.cloud.google.com/apis/credentials?folder=&organizationId=&project=seismic-fx-321400) and use them on _.env-example_ file.
 
 This app works for Android only.
