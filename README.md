@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 <div align="center">
-=======
-<div style="text-align: center">
->>>>>>> 427a1547f38e3dbfc32c2e84b8dbda2f11a854d9
 
 ## PokeDeck
 
