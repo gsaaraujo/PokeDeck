@@ -12,11 +12,16 @@ it('should show error message for empty field', () => {
   const { getByText, getByTestId, getByPlaceholderText } = render(<SignIn />);
   const signInButton = getByTestId('Button.SignIn');
 
-  getByPlaceholderText('Username');
-  getByPlaceholderText('Password');
+  const name = getByPlaceholderText('Username');
+  const password = getByPlaceholderText('Password');
+
+  expect(name).toBeTruthy();
+  expect(password).toBeTruthy();
 
   fireEvent.press(signInButton);
-  getByText('* Please all fields are required');
+
+  const errorMessage = getByText('* Please all fields are required');
+  expect(errorMessage).toBeTruthy();
 });
 
 it('should change placeholder color when field is focused or blured', () => {
