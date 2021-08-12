@@ -12,18 +12,25 @@ it('should show error message for empty field', () => {
   const { getByText, getByTestId, getByPlaceholderText } = render(<SignUp />);
   const signUpButton = getByTestId('Button.SignUp');
 
-  getByPlaceholderText('Username');
-  getByPlaceholderText('Email');
-  getByPlaceholderText('Password');
+  const userName = getByPlaceholderText('Username');
+  const email = getByPlaceholderText('Email');
+  const password = getByPlaceholderText('Password');
+
+  expect(userName).toBeTruthy();
+  expect(email).toBeTruthy();
+  expect(password).toBeTruthy();
 
   fireEvent.press(signUpButton);
-  getByText('* Please all fields are required');
+
+  const errorMessage = getByText('* Please all fields are required');
+  expect(errorMessage).toBeTruthy();
 });
 
 it('should change placeholder color when field is focused or blured', () => {
   const { getByPlaceholderText } = render(<SignUp />);
   const usernameField = getByPlaceholderText('Username');
-  // No need for passwordField, since it should work in the same way
+  const emailField = getByPlaceholderText('Email');
+  const passwordField = getByPlaceholderText('Password');
 
   fireEvent(usernameField, 'focus');
 
@@ -36,18 +43,59 @@ it('should change placeholder color when field is focused or blured', () => {
   expect(usernameField).toHaveStyle({
     borderBottomColor: '#A8B3E9',
   });
+
+  fireEvent(emailField, 'focus');
+
+  expect(emailField).toHaveStyle({
+    borderBottomColor: '#27AE60',
+  });
+
+  fireEvent(emailField, 'blur');
+
+  expect(emailField).toHaveStyle({
+    borderBottomColor: '#A8B3E9',
+  });
+
+  fireEvent(passwordField, 'focus');
+
+  expect(passwordField).toHaveStyle({
+    borderBottomColor: '#27AE60',
+  });
+
+  fireEvent(passwordField, 'blur');
+
+  expect(passwordField).toHaveStyle({
+    borderBottomColor: '#A8B3E9',
+  });
 });
 
 it('should change placeholder color when field is filled', () => {
   const { getByPlaceholderText } = render(<SignUp />);
   const usernameField = getByPlaceholderText('Username');
-  // No need for passwordField, since it should work in the same way
+  const emailField = getByPlaceholderText('Email');
+  const passwordField = getByPlaceholderText('Password');
 
   fireEvent(usernameField, 'focus');
   fireEvent.changeText(usernameField, 'Rengoku');
   fireEvent(usernameField, 'blur');
 
   expect(usernameField).toHaveStyle({
+    borderBottomColor: '#27AE60',
+  });
+
+  fireEvent(emailField, 'focus');
+  fireEvent.changeText(emailField, 'example@hyrule.com');
+  fireEvent(emailField, 'blur');
+
+  expect(emailField).toHaveStyle({
+    borderBottomColor: '#27AE60',
+  });
+
+  fireEvent(passwordField, 'focus');
+  fireEvent.changeText(passwordField, '123');
+  fireEvent(passwordField, 'blur');
+
+  expect(passwordField).toHaveStyle({
     borderBottomColor: '#27AE60',
   });
 });
