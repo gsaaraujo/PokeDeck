@@ -39,7 +39,10 @@ export const CreateDeck = ({ handleIsModalVisible }: Props) => {
   return (
     <Container>
       <Content>
-        <CloseModalButton handleIsModalVisible={handleIsModalVisible} />
+        <CloseModalButton
+          testID='CloseModalButton'
+          handleIsModalVisible={handleIsModalVisible}
+        />
 
         <DeckNameInput
           placeholder='Your deck name'
