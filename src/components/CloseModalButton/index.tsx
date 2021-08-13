@@ -5,12 +5,13 @@ import ExitSVG from '../../assets/images/exit.svg';
 import { Container } from './styles';
 
 type Props = {
+  testID?: string;
   handleIsModalVisible: () => void;
 };
 
-export const CloseModalButton = ({ handleIsModalVisible }: Props) => {
+export const CloseModalButton = ({ testID, handleIsModalVisible }: Props) => {
   return (
-    <Container onPress={handleIsModalVisible}>
+    <Container testID={testID} onPress={handleIsModalVisible}>
       <ExitSVG height={56} width={56} />
     </Container>
   );

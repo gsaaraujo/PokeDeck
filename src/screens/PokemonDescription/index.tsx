@@ -31,7 +31,10 @@ export const PokemonDescription = ({
 
   return (
     <Container>
-      <CloseModalButton handleIsModalVisible={handleIsModalVisible} />
+      <CloseModalButton
+        testID={'CloseModalButton'}
+        handleIsModalVisible={handleIsModalVisible}
+      />
 
       <Content>
         <PokemonContent>
