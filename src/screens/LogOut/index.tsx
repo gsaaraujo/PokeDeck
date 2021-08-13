@@ -19,14 +19,17 @@ type Props = {
 
 export const LogOut = ({ handleIsModalVisible }: Props) => {
   const { placeholder, buttonText } = theme.fonts;
-  const { button, textColor100, background } = theme.colors;
+  const { button, textColor100 } = theme.colors;
 
   const { handleLogOut } = useAuth();
 
   return (
     <Container>
       <Content>
-        <CloseModalButton handleIsModalVisible={handleIsModalVisible} />
+        <CloseModalButton
+          testID={'CloseModalButton'}
+          handleIsModalVisible={handleIsModalVisible}
+        />
 
         <Text font={placeholder} color={textColor100}>
           Would you like to leave ?
