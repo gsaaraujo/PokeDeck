@@ -5,12 +5,16 @@ import PlusSVG from '../../assets/images/plus.svg';
 import { Container } from './styles';
 
 type Props = {
+  testID?: string;
   handlePressButton: () => void;
 };
 
-export const CreateButton = ({ handlePressButton }: Props) => {
+export const CreateButton = ({ testID, handlePressButton }: Props) => {
   return (
-    <Container style={{ elevation: 5 }} onPress={handlePressButton}>
+    <Container
+      testID={testID}
+      style={{ elevation: 5 }}
+      onPress={handlePressButton}>
       <PlusSVG />
     </Container>
   );

@@ -94,10 +94,12 @@ export const MyDeck = ({ route }: any) => {
           <EmptyListMessage text='What about adding some pokémon ?' />
         ) : (
           <FlatList
+            testID='FlatList.Collection'
             data={cardsCollection}
             keyExtractor={item => item.id}
             renderItem={({ item }) => (
               <Card
+                testID='FlatList.Card'
                 cardInfo={item}
                 isSelected={
                   cardsSelection.find(value => value.id === item.id)
@@ -126,7 +128,10 @@ export const MyDeck = ({ route }: any) => {
             />
           )}
 
-          <CreateButton handlePressButton={handleNavigateToAddCard} />
+          <CreateButton
+            testID='CreateButton'
+            handlePressButton={handleNavigateToAddCard}
+          />
         </ButtonContainer>
       </Content>
     </Container>

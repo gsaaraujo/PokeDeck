@@ -23,12 +23,14 @@ import {
 } from './styles';
 
 type Props = {
+  testID?: string;
   cardInfo: UserCard;
   isSelected: boolean;
   handleLongPressButton: (cardInfo: UserCard) => void;
 };
 
 export const Card = ({
+  testID,
   cardInfo,
   isSelected = false,
   handleLongPressButton,
@@ -64,6 +66,7 @@ export const Card = ({
 
   return (
     <Container
+      testID={testID}
       borderColor={borderColors.length == 2 ? '#464646' : borderColors[0]}
       onLongPress={() => handleLongPressButton(cardInfo)}
       delayLongPress={250}
@@ -96,7 +99,7 @@ export const Card = ({
       </Content>
 
       {isSelected && (
-        <Overlay>
+        <Overlay testID={'Overlay'}>
           <PokeballNormalSVG />
         </Overlay>
       )}
