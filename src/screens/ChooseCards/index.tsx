@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Keyboard, FlatList, ActivityIndicator } from 'react-native';
+import {
+  Keyboard,
+  FlatList,
+  ActivityIndicator,
+  VirtualizedList,
+} from 'react-native';
 
 import axios from 'axios';
 import uuid from 'react-native-uuid';
@@ -118,7 +123,7 @@ export const ChooseCards = ({ route }: any) => {
   };
 
   const handleCardsCollection = async () => {
-    const { data } = await pokeApi.get('/pokemon?limit=20');
+    const { data } = await pokeApi.get('/pokemon?limit=100');
     const allPokemonUrls: Result[] = data.results;
 
     const pokemonCollection = await Promise.all(
@@ -167,6 +172,7 @@ export const ChooseCards = ({ route }: any) => {
         <PokemonTypesCategory>
           {pokemonTypesPartOne.map(value => (
             <PokemonTypeFilter
+              testID='PokemonTypeFilter'
               pokeType={value}
               key={value.id}
               handlePressButton={handleTypeSelection}
@@ -182,6 +188,7 @@ export const ChooseCards = ({ route }: any) => {
         <PokemonTypesCategory>
           {pokemonTypesPartTwo.map(value => (
             <PokemonTypeFilter
+              testID='PokemonTypeFilter'
               pokeType={value}
               key={value.id}
               handlePressButton={handleTypeSelection}
@@ -200,6 +207,7 @@ export const ChooseCards = ({ route }: any) => {
           </LoadingFlatlist>
         ) : (
           <FlatList
+            testID='FlatList.Cards'
             data={cardsCollectionFiltered}
             keyExtractor={item => item.id}
             renderItem={({ item }) => (
@@ -218,6 +226,11 @@ export const ChooseCards = ({ route }: any) => {
               marginHorizontal: 24,
             }}
             showsVerticalScrollIndicator={false}
+            getItemLayout={(data, index) => ({
+              length: 150,
+              offset: 150 * index,
+              index,
+            })}
             numColumns={3}
           />
         )}

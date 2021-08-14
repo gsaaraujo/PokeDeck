@@ -10,18 +10,21 @@ type Type = {
 };
 
 type Props = {
+  testID?: string;
   pokeType: Type;
   isSelected: boolean;
   handlePressButton: (typeName: string) => void;
 };
 
 export const PokemonTypeFilter = ({
+  testID,
   pokeType,
   isSelected = true,
   handlePressButton,
 }: Props) => {
   return (
     <Container
+      testID={testID}
       color={pokeType.color}
       borderColor={pokeType.borderColor}
       isSelected={isSelected}
