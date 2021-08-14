@@ -12,6 +12,7 @@ import { SelectOverlay } from '../../components/SelectOverlay';
 import { Container, IconWrapper, DeckInfo, Text } from './styles';
 
 type Props = {
+  testID?: string;
   deckInfo: UserDeck;
   isSelected?: boolean;
   handlePressDeck: (deckId: string, deckName: string) => void;
@@ -19,6 +20,7 @@ type Props = {
 };
 
 export const Deck = ({
+  testID,
   deckInfo,
   isSelected = false,
   handlePressDeck,
@@ -28,6 +30,7 @@ export const Deck = ({
 
   return (
     <Container
+      testID={testID}
       style={({ pressed }) => pressed && styles.pressed}
       onLongPress={() => handleLongPressDeck(deckInfo.id)}
       onPress={() => handlePressDeck(deckInfo.id, deckInfo.name)}
@@ -44,7 +47,7 @@ export const Deck = ({
           {deckInfo.cards.length} pokémon
         </Text>
       </DeckInfo>
-      {isSelected && <SelectOverlay />}
+      {isSelected && <SelectOverlay testID='SelectOverlay' />}
     </Container>
   );
 };

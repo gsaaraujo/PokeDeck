@@ -71,7 +71,7 @@ export const Home = () => {
   return (
     <Container>
       <Header>
-        <Profile onPress={handleIsLogOutModalVisible}>
+        <Profile testID='Button.Profile' onPress={handleIsLogOutModalVisible}>
           <Avatar source={{ uri: user.picture }} />
           <UserInfo>
             <Text font={header} color={textColor100} size={20}>
@@ -94,6 +94,7 @@ export const Home = () => {
             keyExtractor={item => item.id}
             renderItem={({ item }) => (
               <Deck
+                testID='FlatList.Deck'
                 deckInfo={item}
                 handleLongPressDeck={handleDeckSelection}
                 handlePressDeck={handleNavigateToMyDeck}
@@ -120,14 +121,17 @@ export const Home = () => {
           <FadeInOutButton text='delete' handlePressButton={handleDeckDelete} />
         )}
 
-        <CreateButton handlePressButton={handleIsCreateDeckModalVisible} />
+        <CreateButton
+          testID='CreateButton'
+          handlePressButton={handleIsCreateDeckModalVisible}
+        />
       </ButtonContainer>
 
-      <ModalView visible={isCreateDeckModalVisible}>
+      <ModalView testID='Modal.CreateDeck' visible={isCreateDeckModalVisible}>
         <CreateDeck handleIsModalVisible={handleIsCreateDeckModalVisible} />
       </ModalView>
 
-      <ModalView visible={isLogOutModalVisible}>
+      <ModalView testID='Modal.LogOut' visible={isLogOutModalVisible}>
         <LogOut handleIsModalVisible={handleIsLogOutModalVisible} />
       </ModalView>
     </Container>

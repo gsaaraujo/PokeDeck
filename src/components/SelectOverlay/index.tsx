@@ -6,12 +6,13 @@ import PokeballNormalSVG from '../../assets/images/pokeballNormal.svg';
 import { Container } from './styles';
 
 type Props = {
+  testID?: string;
   normalIcon?: boolean;
 };
 
-export const SelectOverlay = ({ normalIcon = false }: Props) => {
+export const SelectOverlay = ({ testID, normalIcon = false }: Props) => {
   return (
-    <Container>
+    <Container testID={testID}>
       {normalIcon ? <PokeballNormalSVG /> : <PokeballSVG />}
     </Container>
   );
