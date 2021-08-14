@@ -67,20 +67,32 @@ export const AuthProvider = ({ children }: ChildrenProps) => {
 
   const handleDBApi = async (data: LoginUser) => {
     try {
-      const userData = await databaseApi.get(
-        `/findUser/${data.username}/${data.password}`,
-      );
+      //Uncomment if you have some login backend api server running
+      //<=========================================================>
+      // const userData = await databaseApi.get(
+      //   `/findUser/${data.username}/${data.password}`,
+      // );
+      // const userDataJson = JSON.stringify(userData.data);
+      // await AsyncStorage.setItem(USER, userDataJson);
+      // await AsyncStorage.setItem(
+      //   ACCESS_TOKEN,
+      //   JSON.stringify(userData.data.accessToken),
+      // );
+      // setUser(userData);
 
-      const userDataJson = JSON.stringify(userData.data);
+      //If you uncomment the code above, so comment the code below
+      const userData = {
+        name: 'Mr. Cat',
+        picture:
+          'https://thumbs.dreamstime.com/b/random-cat-love-cats-pet-catsslave-110819582.jpg',
+      };
+
+      const userDataJson = JSON.stringify(userData);
 
       await AsyncStorage.setItem(USER, userDataJson);
-      
-      await AsyncStorage.setItem(
-        ACCESS_TOKEN,
-        JSON.stringify(userData.data.accessToken),
-      );
 
-      setUser(userData.data);
+      setUser(userData);
+      setIsLoading(false);
     } catch (error) {
       Alert.alert('Unable to connect', 'Invalid Username or Password');
     }
