@@ -8,7 +8,7 @@
 
 ##
 
-![alt PokeDeck](.github/cover.png)
+![alt PokeDeck](.github/poke_cover.png)
 
 ## 💡 Purpose
 
