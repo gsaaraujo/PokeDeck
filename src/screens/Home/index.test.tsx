@@ -9,8 +9,6 @@ import { Home } from '.';
 
 import { useDeck } from '../../hooks/useDeck';
 import { useAuth } from '../../hooks/useAuth';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { POKEMON_DECKS } from '../../configs/asyncStorage';
 
 const pokeCard = {
   id: '1',

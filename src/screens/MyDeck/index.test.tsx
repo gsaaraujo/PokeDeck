@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { useNavigation } from '@react-navigation/native';
-
 import { render, fireEvent } from '@testing-library/react-native';
 import { renderHook, act } from '@testing-library/react-hooks';
 

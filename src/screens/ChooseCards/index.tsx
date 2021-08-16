@@ -1,10 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  Keyboard,
-  FlatList,
-  ActivityIndicator,
-  VirtualizedList,
-} from 'react-native';
+import { Keyboard, FlatList, ActivityIndicator } from 'react-native';
 
 import axios from 'axios';
 import uuid from 'react-native-uuid';
